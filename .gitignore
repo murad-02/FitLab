@@ -118,7 +118,6 @@ credentials.json
 
 # --- Jupyter / Research ---
 *.ipynb_checkpoints/
-*.ipynb
 notebooks/
 experiments/
 
