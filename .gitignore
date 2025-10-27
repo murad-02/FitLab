@@ -1,0 +1,132 @@
+# ==========================================
+# FitLab Project .gitignore
+# Includes React, Node.js, Python (AI), and Cloud configs
+# ==========================================
+
+# --- Node.js / Backend ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
+/dist
+/build
+/.next
+/out
+
+# Logs
+logs
+*.log
+*.log.*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+*.lcov
+
+# --- Python / AI Layer ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+ENV/
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+.pytest_cache/
+.mypy_cache/
+*.pkl
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.model
+*.onnx
+
+# Model training artifacts
+*.csv
+*.json
+*.npz
+*.npy
+*.sav
+*.joblib
+logs/
+checkpoints/
+runs/
+
+# --- Django (optional if backend in Python) ---
+*.sqlite3
+/staticfiles/
+media/
+db.sqlite3
+
+# --- React / Frontend ---
+/node_modules
+/build
+/.env
+/.pnp
+.pnp.js
+coverage/
+*.tgz
+
+# --- Environment & Config ---
+*.env
+*.env.*
+*.bak
+*.swp
+*.tmp
+*.temp
+*.log
+
+# --- OS / IDE Files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.iml
+
+# --- Deployment ---
+/Dockerfile
+/docker-compose.yml
+/.docker/
+*.pem
+*.key
+*.crt
+*.ppk
+
+# --- Cloud / Secrets ---
+/config/
+serviceAccountKey.json
+firebase.json
+aws-credentials.json
+credentials.json
+
+# --- Jupyter / Research ---
+*.ipynb_checkpoints/
+*.ipynb
+notebooks/
+experiments/
+
+# --- Misc ---
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*.old
+*.orig
