@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLab - Workout Type Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏋️ FitLab Workout Type Predictor</h1>
+            <p>Predict your optimal workout type based on your fitness data</p>
+        </header>
+
+        <div class="main-content">
+            <form id="predictionForm" class="prediction-form">
+                <div class="form-section">
+                    <h2>Basic Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="Weight (kg)">Weight (kg) *</label>
+                            <input type="number" id="Weight (kg)" name="Weight (kg)" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="BMI">BMI (Body Mass Index) *</label>
+                            <input type="number" id="BMI" name="BMI" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="BMI_calc">BMI (Calculated) *</label>
+                            <input type="number" id="BMI_calc" name="BMI_calc" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Fat_Percentage">Fat Percentage (%) *</label>
+                            <input type="number" id="Fat_Percentage" name="Fat_Percentage" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Workout & Exercise Data</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="Calories_Burned">Calories Burned *</label>
+                            <input type="number" id="Calories_Burned" name="Calories_Burned" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Session_Duration (hours)">Session Duration (hours) *</label>
+                            <input type="number" id="Session_Duration (hours)" name="Session_Duration (hours)" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Workout_Frequency (days/week)">Workout Frequency (days/week) *</label>
+                            <input type="number" id="Workout_Frequency (days/week)" name="Workout_Frequency (days/week)" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Experience_Level">Experience Level (1-3) *</label>
+                            <input type="number" id="Experience_Level" name="Experience_Level" step="0.01" min="1" max="3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Burns Calories (per 30 min)">Calories Burned (per 30 min) *</label>
+                            <input type="number" id="Burns Calories (per 30 min)" name="Burns Calories (per 30 min)" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Burns Calories (per 30 min)_bc">Calories Burned (per 30 min)_bc *</label>
+                            <input type="number" id="Burns Calories (per 30 min)_bc" name="Burns Calories (per 30 min)_bc" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Nutrition & Diet</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="Calories">Daily Calories *</label>
+                            <input type="number" id="Calories" name="Calories" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="protein_per_kg">Protein per kg (g/kg) *</label>
+                            <input type="number" id="protein_per_kg" name="protein_per_kg" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cholesterol_mg">Cholesterol (mg) *</label>
+                            <input type="number" id="cholesterol_mg" name="cholesterol_mg" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sodium_mg">Sodium (mg) *</label>
+                            <input type="number" id="sodium_mg" name="sodium_mg" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serving_size_g">Serving Size (g) *</label>
+                            <input type="number" id="serving_size_g" name="serving_size_g" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cook_time_min">Cook Time (minutes) *</label>
+                            <input type="number" id="cook_time_min" name="cook_time_min" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Advanced Metrics</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="cal_balance">Calorie Balance *</label>
+                            <input type="number" id="cal_balance" name="cal_balance" step="0.01" required>
+                            <small>Calories consumed - Calories burned</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="expected_burn">Expected Burn *</label>
+                            <input type="number" id="expected_burn" name="expected_burn" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lean_mass_kg">Lean Mass (kg) *</label>
+                            <input type="number" id="lean_mass_kg" name="lean_mass_kg" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Water_Intake (liters)">Water Intake (liters) *</label>
+                            <input type="number" id="Water_Intake (liters)" name="Water_Intake (liters)" step="0.01" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Predict Workout Type</button>
+                    <button type="reset" class="btn-secondary">Reset Form</button>
+                </div>
+            </form>
+
+            <div id="result" class="result-container" style="display: none;">
+                <h2>Prediction Result</h2>
+                <div class="prediction-card">
+                    <div class="prediction-header">
+                        <h3 id="predictedWorkout"></h3>
+                        <span class="confidence-badge" id="confidenceBadge"></span>
+                    </div>
+                    <div class="probabilities">
+                        <h4>Probability Distribution:</h4>
+                        <div class="prob-bars" id="probBars"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error" class="error-container" style="display: none;">
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Hide previous results
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            
+            // Collect form data
+            const formData = {};
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                formData[input.name] = input.value;
+            });
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Display results
+                    document.getElementById('predictedWorkout').textContent = data.prediction;
+                    document.getElementById('confidenceBadge').textContent = `${data.confidence.toFixed(2)}% confidence`;
+                    
+                    // Display probabilities
+                    const probBars = document.getElementById('probBars');
+                    probBars.innerHTML = '';
+                    
+                    for (const [workout, prob] of Object.entries(data.probabilities)) {
+                        const probBar = document.createElement('div');
+                        probBar.className = 'prob-bar-container';
+                        probBar.innerHTML = `
+                            <div class="prob-bar-label">
+                                <span>${workout}</span>
+                                <span>${prob.toFixed(2)}%</span>
+                            </div>
+                            <div class="prob-bar">
+                                <div class="prob-bar-fill" style="width: ${prob}%"></div>
+                            </div>
+                        `;
+                        probBars.appendChild(probBar);
+                    }
+                    
+                    document.getElementById('result').style.display = 'block';
+                    document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Display error
+                    document.getElementById('errorMessage').textContent = data.error || 'An error occurred';
+                    document.getElementById('error').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = 'Network error: ' + error.message;
+                document.getElementById('error').style.display = 'block';
+            }
+        });
+
+        // Auto-calculate BMI if weight and height are provided
+        document.getElementById('Weight (kg)').addEventListener('input', calculateBMI);
+        
+        function calculateBMI() {
+            // This is a helper - you might want to add a height field
+            // For now, users can input BMI directly
+        }
+    </script>
+</body>
+</html>
+
