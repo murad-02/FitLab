@@ -38,7 +38,7 @@ REACT_APP_API_URL=http://localhost:5000
 
 If not specified, it defaults to `http://localhost:5000`.
 
-## Running the Application
+## Running the Applications
 
 ### Development Mode
 
