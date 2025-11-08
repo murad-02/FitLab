@@ -1,0 +1,200 @@
+.prediction-results-container {
+  padding: 20px 40px 40px;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prediction-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #667eea;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.prediction-title h3 {
+  color: #667eea;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.workout-type {
+  font-size: 2.5em;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.confidence-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  border-radius: 15px;
+  color: white;
+  min-width: 120px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confidence-value {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.confidence-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.probabilities-section {
+  margin-top: 30px;
+}
+
+.probabilities-section h4 {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.probabilities-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95em;
+}
+
+.prob-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.prob-bar-container {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prob-bar-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prob-bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #555;
+  align-items: center;
+}
+
+.workout-name {
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.prob-value {
+  font-size: 1.1em;
+  color: #667eea;
+  font-weight: 700;
+}
+
+.prob-bar {
+  width: 100%;
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.prob-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  transition: width 0.8s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85em;
+  min-width: 40px;
+}
+
+.prediction-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.prediction-footer p {
+  color: #666;
+  font-size: 0.9em;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.prediction-footer strong {
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .prediction-results-container {
+    padding: 20px;
+  }
+
+  .prediction-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .workout-type {
+    font-size: 1.8em;
+  }
+
+  .confidence-badge {
+    width: 100%;
+  }
+
+  .prob-bar-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+

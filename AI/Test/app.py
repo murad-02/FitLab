@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import joblib
 import numpy as np
 import os
 
 app = Flask(__name__)
+# Enable CORS for all routes to allow React frontend to communicate
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load the model and related files
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))

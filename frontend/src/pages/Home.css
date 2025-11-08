@@ -1,0 +1,82 @@
+.home-container {
+  width: 100%;
+}
+
+.content-wrapper {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.intro-section {
+  padding: 30px 40px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  text-align: center;
+  border-bottom: 3px solid #667eea;
+}
+
+.intro-section h2 {
+  color: #667eea;
+  font-size: 2em;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.intro-section p {
+  color: #555;
+  font-size: 1.1em;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.error-message {
+  background: #f8d7da;
+  border: 2px solid #f5c6cb;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #721c24;
+  font-weight: 600;
+  animation: slideIn 0.5s ease;
+}
+
+.error-message span {
+  font-size: 1.5em;
+}
+
+.error-message p {
+  margin: 0;
+  flex: 1;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 20px;
+  }
+  
+  .intro-section h2 {
+    font-size: 1.5em;
+  }
+  
+  .intro-section p {
+    font-size: 1em;
+  }
+}
+
