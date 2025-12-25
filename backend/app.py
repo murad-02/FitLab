@@ -20,28 +20,32 @@ scaler = None
 label_encoder = None
 
 try:
+    print(f"Loading model from: {MODEL_PATH}")
     if os.path.exists(MODEL_PATH):
         model = joblib.load(MODEL_PATH)
+        print("✓ Model loaded successfully.")
     else:
-        print(f"Model file not found at {MODEL_PATH}")
+        print(f"✗ Model file not found at {MODEL_PATH}")
 
+    print(f"Loading scaler...")
     if os.path.exists(SCALER_PATH_TOP20):
         scaler = joblib.load(SCALER_PATH_TOP20)
-        print("Using top20_scaler.pkl")
+        print("✓ Using top20_scaler.pkl (optimized for 20 features)")
     elif os.path.exists(SCALER_PATH_FULL):
         scaler = joblib.load(SCALER_PATH_FULL)
-        print("Using full_dataset_scaler.pkl")
+        print("⚠ Using full_dataset_scaler.pkl as fallback. Note: This may cause errors if feature dimensions don't match.")
     else:
-        print("No scaler file found in AI folder")
+        print("✗ No scaler file found in AI folder. Please run AI/Test/create_scaler.py")
 
     if os.path.exists(LABEL_ENCODER_PATH):
         label_encoder = joblib.load(LABEL_ENCODER_PATH)
+        print("✓ Label encoder loaded successfully.")
     else:
-        print(f"Label encoder not found at {LABEL_ENCODER_PATH}")
+        print(f"✗ Label encoder not found at {LABEL_ENCODER_PATH}")
 
-    print("Model loading attempted.")
+    print("Backend initialization complete.")
 except Exception as e:
-    print(f"Error loading model/scaler/encoder: {e}")
+    print(f"Critical error during model initialization: {e}")
     model = None
     scaler = None
     label_encoder = None
@@ -97,7 +101,16 @@ def predict():
                 return jsonify({'error': f'Invalid value for {feature}'}), 400
 
         features_array = np.array(feature_values).reshape(1, -1)
-        features_scaled = scaler.transform(features_array)
+        
+        try:
+            features_scaled = scaler.transform(features_array)
+        except ValueError as ve:
+            if "n_features" in str(ve) or "X has" in str(ve):
+                return jsonify({
+                    'error': 'Scaler dimension mismatch. The loaded scaler expects more features than provided. ' +
+                             'Please run AI/Test/create_scaler.py to generate the correct top20_scaler.pkl.'
+                }), 500
+            raise ve
 
         prediction = model.predict(features_scaled)[0]
         probabilities = model.predict_proba(features_scaled)[0]

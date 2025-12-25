@@ -1,0 +1,16 @@
+{
+  "name": "fitlab",
+  "version": "1.0.0",
+  "description": "FitLab - AI-Powered Workout Type Prediction System",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && python app.py",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+    "setup:scaler": "cd AI/Test && python create_scaler.py && copy top20_scaler.pkl ..\\top20_scaler.pkl"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -84,8 +84,17 @@ try:
     
     # Save the scaler
     output_path = 'top20_scaler.pkl'
+    parent_output_path = '../top20_scaler.pkl'
+    
     joblib.dump(scaler_top20, output_path)
     print(f"✓ Scaler saved to {output_path}")
+    
+    try:
+        joblib.dump(scaler_top20, parent_output_path)
+        print(f"✓ Scaler also saved to {parent_output_path}")
+    except Exception as e:
+        print(f"Warning: Could not save to parent directory: {e}")
+        
     print(f"✓ Scaler fitted on {len(available_features)} features")
     
 except Exception as e:
